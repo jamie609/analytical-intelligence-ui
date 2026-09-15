@@ -1,0 +1,49 @@
+/* globals.css — base resets and design tokens only.
+   Fonts are loaded via next/font/google in layout.tsx (non-blocking). */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #f8fafc;
+  --surface:     #ffffff;
+  --border:      #e2e8f0;
+  --border-mid:  #cbd5e1;
+  --text:        #0f172a;
+  --text-2:      #475569;
+  --text-3:      #64748b;
+  --blue:        #0B2463; /* QiDesk Deep Blue */
+  --blue-light:  #1e3a8a;
+  --blue-pale:   #eef2f8;
+  --navy:        #0B2463;
+  --green:       #43A047; /* QiDesk Green */
+  --radius:      8px;
+  --radius-lg:   12px;
+  /* CSS variables set by next/font injected class on <html> */
+  --font:        var(--font-sans, 'Inter', system-ui, sans-serif);
+  --mono:        var(--font-mono, 'IBM Plex Mono', monospace);
+}
+
+html, body { height: 100%; font-family: var(--font); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+a { color: var(--blue-light); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--blue); text-decoration: underline; }
+
+input, button, select, textarea { font-family: var(--font); }
+
+/* Unified Animation Keyframes */
+@keyframes spin    { to { transform: rotate(360deg); } }
+@keyframes fadeIn  { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes fadeUp  { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes bounce  { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+@keyframes pulse   { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.6); } }
+
+.fade-in { animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Slim custom scrollbars */
+::-webkit-scrollbar           { width: 5px; height: 5px; }
+::-webkit-scrollbar-track     { background: transparent; }
+::-webkit-scrollbar-thumb     { background: #cbd5e1; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+textarea { resize: none; }
+button:focus { outline: none; }
