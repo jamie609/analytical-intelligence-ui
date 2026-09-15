@@ -51,7 +51,7 @@ export default function LoginPage() {
         <img 
           src="/QFT-image.png" 
           alt="Quinte Financial Technologies" 
-          style={{ height: "80px", marginBottom: "24px", objectFit: "contain" }} 
+          style={{ height: "100px", marginBottom: "24px", objectFit: "contain" }} 
         />
         <h2 style={{ color: "#64748b", fontSize: "1.1rem", margin: 0, fontWeight: 400 }}>
           Sign in to your account
@@ -65,13 +65,14 @@ export default function LoginPage() {
         border: "1px solid #e5e7eb",
         borderRadius: "12px",
         padding: "32px",
-        boxSizing: "border-box"
+        boxSizing: "border-box",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.03)"
       }}>
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "24px" }} autoComplete="off">
 
           {/* Email Field */}
           <div>
-            <label style={{ display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px" }}>
+            <label style={{ display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "#0B2463" }}>
               Email
             </label>
             <input
@@ -79,71 +80,75 @@ export default function LoginPage() {
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder="analyst@yourcompany.com"
-              autoComplete="new-password" // Hack to prevent aggressive browser autofill during dev
+              autoComplete="new-password"
               style={{
-                width: "100%",
-                backgroundColor: "#eef2f6",
-                border: "none",
-                padding: "12px 16px",
-                borderRadius: "6px",
-                fontSize: "14px",
-                color: "#1f2937",
-                outline: "none",
-                boxSizing: "border-box"
+                width: "100%", 
+                backgroundColor: "#f8fafc", 
+                border: "1px solid #cbd5e1", 
+                padding: "12px 16px", 
+                borderRadius: "8px", 
+                fontSize: "14px", 
+                color: "#0f172a", 
+                outline: "none", 
+                boxSizing: "border-box", 
+                transition: "all 0.2s"
               }}
-              onFocus={e => e.target.style.boxShadow = "0 0 0 2px #60a5fa"}
-              onBlur={e => e.target.style.boxShadow = "none"}
+              onFocus={e => { e.target.style.borderColor = "#43A047"; e.target.style.boxShadow = "0 0 0 3px rgba(67, 160, 71, 0.15)"; }}
+              onBlur={e => { e.target.style.borderColor = "#cbd5e1"; e.target.style.boxShadow = "none"; }}
             />
           </div>
 
           {/* Password Field */}
           <div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
-              <label style={{ fontSize: "14px", fontWeight: 600 }}>Password</label>
-              <a href="#" style={{ fontSize: "14px", color: "#3b82f6", textDecoration: "none" }}>Forgot password?</a>
+              <label style={{ fontSize: "14px", fontWeight: 600, color: "#0B2463" }}>Password</label>
+              <a href="#" style={{ fontSize: "13px", color: "#43A047", fontWeight: 600, textDecoration: "none" }}>Forgot password?</a>
             </div>
             <input
               type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
               placeholder="Enter your password"
-              autoComplete="new-password" // Hack to prevent aggressive browser autofill during dev
+              autoComplete="new-password"
               style={{
-                width: "100%",
-                backgroundColor: "#eef2f6",
-                border: "none",
-                padding: "12px 16px",
-                borderRadius: "6px",
-                fontSize: "14px",
-                color: "#1f2937",
-                outline: "none",
-                boxSizing: "border-box"
+                width: "100%", 
+                backgroundColor: "#f8fafc", 
+                border: "1px solid #cbd5e1", 
+                padding: "12px 16px", 
+                borderRadius: "8px", 
+                fontSize: "14px", 
+                color: "#0f172a", 
+                outline: "none", 
+                boxSizing: "border-box", 
+                transition: "all 0.2s"
               }}
-              onFocus={e => e.target.style.boxShadow = "0 0 0 2px #60a5fa"}
-              onBlur={e => e.target.style.boxShadow = "none"}
+              onFocus={e => { e.target.style.borderColor = "#43A047"; e.target.style.boxShadow = "0 0 0 3px rgba(67, 160, 71, 0.15)"; }}
+              onBlur={e => { e.target.style.borderColor = "#cbd5e1"; e.target.style.boxShadow = "none"; }}
             />
           </div>
 
-          {/* Submit Button */}
+          {/* Submit Button (QiDesk Green) */}
           <button
             type="submit"
             disabled={loading || success}
             style={{
-              width: "100%",
-              backgroundColor: "#111827",
-              color: "#ffffff",
-              border: "none",
-              padding: "12px",
-              borderRadius: "6px",
-              fontSize: "14px",
-              fontWeight: 500,
-              cursor: loading ? "not-allowed" : "pointer",
-              marginTop: "8px",
-              opacity: loading ? 0.8 : 1,
-              transition: "background-color 0.2s"
+              width: "100%", 
+              backgroundColor: "#43A047", 
+              color: "#ffffff", 
+              border: "none", 
+              padding: "14px", 
+              borderRadius: "8px", 
+              fontSize: "15px", 
+              fontWeight: 600, 
+              cursor: loading ? "not-allowed" : "pointer", 
+              marginTop: "8px", 
+              opacity: loading ? 0.8 : 1, 
+              transition: "background-color 0.2s, transform 0.1s"
             }}
-            onMouseEnter={e => { if (!loading) (e.target as HTMLButtonElement).style.backgroundColor = "#1f2937"; }}
-            onMouseLeave={e => { (e.target as HTMLButtonElement).style.backgroundColor = "#111827"; }}
+            onMouseEnter={e => { if (!loading) (e.target as HTMLButtonElement).style.backgroundColor = "#388E3C"; }}
+            onMouseLeave={e => { (e.target as HTMLButtonElement).style.backgroundColor = "#43A047"; }}
+            onMouseDown={e => { if (!loading) (e.target as HTMLButtonElement).style.transform = "scale(0.98)"; }}
+            onMouseUp={e => { if (!loading) (e.target as HTMLButtonElement).style.transform = "scale(1)"; }}
           >
             {loading ? "Signing in..." : "Sign in"}
           </button>
@@ -163,7 +168,7 @@ export default function LoginPage() {
 
           {/* Footer */}
           <p style={{ textAlign: "center", fontSize: "14px", color: "#4b5563", margin: "16px 0 0 0" }}>
-            Don't have an account? <a href="#" style={{ color: "#111827", fontWeight: 700, textDecoration: "none" }}>Create account</a>
+            Don't have an account? <a href="#" style={{ color: "#0B2463", fontWeight: 700, textDecoration: "none" }}>Create account</a>
           </p>
           
         </form>
